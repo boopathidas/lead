@@ -1,0 +1,44 @@
+/* Custom background for the page */
+.custom-bg {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Custom card styling */
+.custom-card {
+    max-width: 500px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.custom-title {
+    font-size: 2rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* Custom button styling */
+.custom-btn {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button focus state */
+.custom-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}

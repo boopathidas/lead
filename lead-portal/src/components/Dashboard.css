@@ -1,0 +1,153 @@
+/* Dashboard Styles */
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Header */
+h1 {
+    font-size: 2.5rem;
+    color: #343a40;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Lead Form */
+.lead-form input, .lead-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.lead-form textarea {
+    height: 150px;
+}
+
+.lead-form button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.lead-form button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.lead-form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.lead-form button[type="button"] {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.lead-form button[type="button"]:hover {
+    background-color: #c82333;
+}
+
+/* Table */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Search Input */
+.search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.ml-2 {
+    margin-left: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .lead-form input, .lead-form textarea, .search-input {
+        font-size: 0.9rem;
+    }
+
+    .table th, .table td {
+        font-size: 0.9rem;
+    }
+
+    .dashboard {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}

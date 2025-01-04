@@ -1,0 +1,62 @@
+/* Custom gradient background for the page */
+.bg-gradient {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Card styling for a polished look */
+.custom-card {
+    max-width: 400px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Title styling */
+.custom-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Custom input field styling */
+.custom-input {
+    border-radius: 8px;
+    box-shadow: none;
+    transition: 0.3s;
+}
+
+.custom-input:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 0 0.2rem rgba(37, 117, 252, 0.25);
+}
+
+/* Custom button styling */
+.custom-btn {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 12px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover and active states for buttons */
+.custom-btn:active,
+.custom-btn:hover {
+    background-color: #2575fc;
+    border-color: #2575fc;
+    color: white;
+}
+
+/* Form padding and spacing adjustments */
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
