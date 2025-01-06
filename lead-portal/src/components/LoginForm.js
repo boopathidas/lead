@@ -1,35 +1,19 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import './LoginForm.css'; // Custom CSS for additional styling
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './LoginForm.css';
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    // Function to handle login form submission
-    const handleLoginSubmit = async (e) => {
+    const handleLoginSubmit = (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:8000/api/login/', { username, password });
-    
-            if (response.data.token) {
-                // Store the token in localStorage
-                localStorage.setItem('token', response.data.token);
-    
-                // Always navigate to the Admin Dashboard after successful login
-                navigate('/admin-dashboard');
-            } else {
-                alert('Invalid credentials');
-            }
-        } catch (error) {
-            console.error('Login failed:', error);
-            alert('Invalid credentials');
-        }
+        // Navigate directly to the admin dashboard without backend check
+        navigate('/admin-dashboard');
     };
-    
+
     return (
         <div className="d-flex justify-content-center align-items-center vh-100 bg-gradient">
             <div className="card shadow-lg p-5 custom-card">

@@ -12,11 +12,14 @@ const AdminDashboard = () => {
         phone_number: '',
         company: '',
         description: '',
+        location: '',  // Added location field for lead
     });
     const [newUser, setNewUser] = useState({
-        name: '',
+        partnerName: '',
+        contactName: '',
         email: '',
-        phone_number: '',
+        phoneNumber: '',
+        location: '',
     });
     const [showLeadForm, setShowLeadForm] = useState(false);
     const [showUserForm, setShowUserForm] = useState(false);  // Toggle User form visibility
@@ -56,7 +59,7 @@ const AdminDashboard = () => {
             });
             if (response.status === 201) {
                 alert('Lead submitted successfully!');
-                setNewLead({ name: '', email: '', phone_number: '', company: '', description: '' });
+                setNewLead({ name: '', email: '', phone_number: '', company: '', description: '', location: '' });
                 fetchLeads();
                 setShowLeadForm(false); // Hide form after submission
             }
@@ -70,17 +73,14 @@ const AdminDashboard = () => {
         e.preventDefault();
         navigate('/partner-dashboard');
         try {
-            // Assuming a similar endpoint for creating users
             const response = await axios.post(`${apiBaseUrl}/create-user/`, newUser, {
                 headers: { Authorization: `Token ${localStorage.getItem('token')}` },
             });
             if (response.status === 201) {
                 alert('User created successfully!');
-                setNewUser({ name: '', email: '', phone_number: '' });
+                setNewUser({ partnerName: '', contactName: '', email: '', phoneNumber: '', location: '' });
                 setShowUserForm(false); // Hide form after submission
-
-                // Navigate to Partner Dashboard after creating the user
-                navigate('/partner-dashboard');
+                navigate('/partner-dashboard');  // Navigate to Partner Dashboard after creating the user
             }
         } catch (error) {
             console.error('Error creating user:', error);
@@ -107,11 +107,30 @@ const AdminDashboard = () => {
                 <div>
                     <h2>Submit Lead</h2>
                     <form className="lead-form" onSubmit={handleSubmitLead}>
-                        <input name="name" placeholder="Name" onChange={handleLeadInputChange} value={newLead.name} required />
-                        <input name="email" placeholder="Email" type="email" onChange={handleLeadInputChange} value={newLead.email} required />
-                        <input name="phone_number" placeholder="Phone Number" onChange={handleLeadInputChange} value={newLead.phone_number} required />
-                        <input name="company" placeholder="Company" onChange={handleLeadInputChange} value={newLead.company} required />
-                        <textarea name="description" placeholder="Lead Details" onChange={handleLeadInputChange} value={newLead.description} required />
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input name="name" id="name" placeholder="Enter Name" onChange={handleLeadInputChange} value={newLead.name} required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input name="email" id="email" type="email" placeholder="Enter Email" onChange={handleLeadInputChange} value={newLead.email} required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="phone_number">Phone Number</label>
+                            <input name="phone_number" id="phone_number" placeholder="Enter Phone Number" onChange={handleLeadInputChange} value={newLead.phone_number} required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="company">Company</label>
+                            <input name="company" id="company" placeholder="Enter Company" onChange={handleLeadInputChange} value={newLead.company} required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="description">Lead Details</label>
+                            <textarea name="description" id="description" placeholder="Enter Lead Details" onChange={handleLeadInputChange} value={newLead.description} required />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="location">Location</label>
+                            <input name="location" id="location" placeholder="Enter Location" onChange={handleLeadInputChange} value={newLead.location} required />
+                        </div>
                         <button type="submit">Submit Lead</button>
                     </form>
                 </div>
@@ -122,9 +141,62 @@ const AdminDashboard = () => {
                 <div>
                     <h2>Create User</h2>
                     <form className="user-form" onSubmit={handleSubmitUser}>
-                        <input name="name" placeholder="Name" onChange={handleUserInputChange} value={newUser.name} required />
-                        <input name="email" placeholder="Email" type="email" onChange={handleUserInputChange} value={newUser.email} required />
-                        <input name="phone_number" placeholder="Phone Number" onChange={handleUserInputChange} value={newUser.phone_number} required />
+                        <div className="form-group">
+                            <label htmlFor="partnerName">Partner Name</label>
+                            <input 
+                                name="partnerName" 
+                                id="partnerName" 
+                                placeholder="Enter Partner Name" 
+                                onChange={handleUserInputChange} 
+                                value={newUser.partnerName} 
+                                required 
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="contactName">Contact Name</label>
+                            <input 
+                                name="contactName" 
+                                id="contactName" 
+                                placeholder="Enter Contact Name" 
+                                onChange={handleUserInputChange} 
+                                value={newUser.contactName} 
+                                required 
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input 
+                                name="email" 
+                                id="email" 
+                                type="email" 
+                                placeholder="Enter Email" 
+                                onChange={handleUserInputChange} 
+                                value={newUser.email} 
+                                required 
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="phoneNumber">Phone Number</label>
+                            <input 
+                                name="phoneNumber" 
+                                id="phoneNumber" 
+                                placeholder="Enter Phone Number" 
+                                onChange={handleUserInputChange} 
+                                value={newUser.phoneNumber} 
+                                required 
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="location">Location</label>
+                            <input 
+                                name="location" 
+                                id="location" 
+                                placeholder="Enter Location" 
+                                onChange={handleUserInputChange} 
+                                value={newUser.location} 
+                                required 
+                            />
+                        </div>
                         <button type="submit">Create User</button>
                     </form>
                 </div>
@@ -139,7 +211,9 @@ const AdminDashboard = () => {
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Company</th>
+                        <th>Location</th>
                         <th>Status</th>
+                        <th>Partner</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
